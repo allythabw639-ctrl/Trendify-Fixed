@@ -49,7 +49,7 @@ class _FeedScreenState extends State<FeedScreen> {
     if (_videos.isEmpty) {
       return const Center(
         child: Text(
-          'No videos found.',
+          'No videos found. Check your connection.',
           style: TextStyle(color: Colors.white),
         ),
       );
@@ -107,20 +107,32 @@ class _FeedScreenState extends State<FeedScreen> {
                 children: [
                   _ActionButton(
                     icon: Icons.favorite,
-                    label: video.likes.toString(),
-                    onTap: () {},
+                    label: _formatCount(video.likes),
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Liked!')),
+                      );
+                    },
                   ),
                   const SizedBox(height: 20),
                   _ActionButton(
                     icon: Icons.comment,
-                    label: video.comments.toString(),
-                    onTap: () {},
+                    label: _formatCount(video.comments),
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Comments section coming soon!')),
+                      );
+                    },
                   ),
                   const SizedBox(height: 20),
                   _ActionButton(
                     icon: Icons.share,
-                    label: video.shares.toString(),
-                    onTap: () {},
+                    label: _formatCount(video.shares),
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Share shared!')),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -129,6 +141,13 @@ class _FeedScreenState extends State<FeedScreen> {
         );
       },
     );
+  }
+
+  String _formatCount(int count) {
+    if (count >= 1000) {
+      return '${(count / 1000).toStringAsFixed(1)}K';
+    }
+    return count.toString();
   }
 }
 
@@ -147,16 +166,20 @@ class _ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: Colors.white, size: 32),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: const TextStyle(color: Colors.white, fontSize: 12),
-          ),
-        ],
+      borderRadius: BorderRadius.circular(30),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, color: Colors.white, size: 32),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white, fontSize: 12),
+            ),
+          ],
+        ),
       ),
     );
   }
