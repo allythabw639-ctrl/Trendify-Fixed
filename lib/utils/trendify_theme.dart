@@ -13,6 +13,15 @@ class TrendifyBrand {
         secondary: Colors.cyanAccent,
         surface: Colors.grey[900]!,
       ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.black,
+        elevation: 0,
+      ),
+      textTheme: const TextTheme(
+        headlineMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        bodyLarge: TextStyle(color: Colors.white),
+        bodyMedium: TextStyle(color: Colors.white70),
+      ),
     );
   }
 

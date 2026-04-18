@@ -37,4 +37,22 @@ const List<VideoModel> sampleVideos = [
     comments: 215,
     shares: 56,
   ),
+  VideoModel(
+    id: '3',
+    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    username: '@trending_clips',
+    description: 'Epic blazes compilation #trending #viral',
+    likes: 34200,
+    comments: 1023,
+    shares: 456,
+  ),
+  VideoModel(
+    id: '4',
+    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    username: '@adventure_time',
+    description: 'Great escapes! #adventure #exciting',
+    likes: 19800,
+    comments: 567,
+    shares: 234,
+  ),
 ];
